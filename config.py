@@ -2,8 +2,9 @@
 import os
 from os import environ
 import logging
+import re
 from logging.handlers import RotatingFileHandler
-
+id_pattern = re.compile(r'^.\d+$')  # Add this
 # Recommended
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "8071086810:AAGEQ8N2ZCljYTpc7Cvafs36SgYVtPZmefY")
 APP_ID = int(os.environ.get("APP_ID", "21370037"))
