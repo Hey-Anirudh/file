@@ -4,7 +4,9 @@ from os import environ
 import logging
 import re
 from logging.handlers import RotatingFileHandler
+
 id_pattern = re.compile(r'^.\d+$')  # Add this
+
 # Recommended
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "8071086810:AAGEQ8N2ZCljYTpc7Cvafs36SgYVtPZmefY")
 APP_ID = int(os.environ.get("APP_ID", "21370037"))
@@ -18,18 +20,18 @@ PORT = os.environ.get("PORT", "8080")
 DB_URI = os.environ.get("DB_URI", "mongodb+srv://interpeterr:interpeterr@cluster0.bh4seqc.mongodb.net/?appName=Cluster0")
 DB_NAME = os.environ.get("DB_NAME", "link")
 
-#Auto approve 
+# Auto approve 
 CHAT_ID = [int(app_chat_id) if id_pattern.search(app_chat_id) else app_chat_id for app_chat_id in environ.get('CHAT_ID', '-1003241518302').split()] # dont change anything 
 TEXT = environ.get("APPROVED_WELCOME_TEXT", "<b>{mention},\n\nʏᴏᴜʀ ʀᴇǫᴜᴇsᴛ ᴛᴏ ᴊᴏɪɴ {title} ɪs ᴀᴘᴘʀᴏᴠᴇᴅ.\n\‣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ @ShadowBotsHQ</b>")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 # Default
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "40"))
-#--- ---- ---- --- --- --- - -- -  - - - - - - - - - - - --  - -
 
 # Start pic
 START_PIC = "https://telegra.ph/file/f3d3aff9ec422158feb05-d2180e3665e0ac4d32.jpg"
 START_IMG = "https://telegra.ph/file/f3d3aff9ec422158feb05-d2180e3665e0ac4d32.jpg"
+
 # Messages
 START_MSG = os.environ.get("START_MESSAGE", "<b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴀᴅᴠᴀɴᴄᴇᴅ ʟɪɴᴋs sʜᴀʀɪɴɢ ʙᴏᴛ. ᴡɪᴛʜ ᴛʜɪs ʙᴏᴛ, ʏᴏᴜ ᴄᴀɴ sʜᴀʀᴇ ʟɪɴᴋs ᴀɴᴅ ᴋᴇᴇᴘ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟs sᴀғᴇ ғʀᴏᴍ ᴄᴏᴘʏʀɪɢʜᴛ ɪssᴜᴇs.\n\n<blockquote>‣ ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/ShadowBotsHQ'>ʏᴀᴛᴏ</a></blockquote></b>")
 HELP = os.environ.get("HELP_MESSAGE", "<b><blockquote expandable>» Creator: <a href=tg://openmessage?user_id=7846306818>S H Λ M R O C K</a>\n» Our Community: <a href=https://t.me/VERSEXNETWORK>𝐕ᴇʀsᴇ 𝐍ᴇᴛᴡᴏʀᴋ</a>\n» Anime Channel: <a href=https://t.me/ANIMEXVERSE>𝐀ɴɪᴍᴇ 𝐕ᴇʀsᴇ</a>\n» Ongoing Anime: <a href=https://t.me/ONGOINGXVERSE>𝐎ɴɢᴏɪɴɢ 𝐕ᴇʀsᴇ</a>\n» Developer: <a href=https://t.me/Redfr>𝗥𝗘𝗗</a></b>")
@@ -50,28 +52,46 @@ CHANNELS_TXT = """<b>›› ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ: <a href='https://t.
 ›› ᴄᴏᴍᴍᴜɴɪᴛʏ: <a href='https://t.me/VERSEXNETWORK'>𝐕ᴇʀsᴇ 𝐍ᴇᴛᴡᴏʀᴋ</a>
 ›› ᴅᴇᴠᴇʟᴏᴘᴇʀ: @Redfr</b></blockquote>""" # Bhosdiwalo agar developer me Yato ka username hataya to agli baar se koi repo public nhi krunga!!
 
-#--- ---- ---- --- --- --- - -- -  - - - - - - - - - - - --  - -
 # Default
 BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
 USER_REPLY_TEXT = "⚠️ ғᴜᴄᴋ ʏᴏᴜ, ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ᴍᴀsᴛᴇʀ. ɢᴏ ᴀᴡᴀʏ, ʙɪᴛᴄʜ 🙃!"
 
 # Logging
 LOG_FILE_NAME = "links-sharingbot.txt"
-DATABASE_CHANNEL = int(os.environ.get("DATABASE_CHANNEL", "")) # Channel where user links are stored
-#--- ---- ---- --- --- --- - -- -  - - - - - - - - - - - --  - -
 
+# Fixed: Handle empty DATABASE_CHANNEL environment variable
+DATABASE_CHANNEL_STR = os.environ.get("DATABASE_CHANNEL", "")
+if DATABASE_CHANNEL_STR and DATABASE_CHANNEL_STR.strip():
+    try:
+        DATABASE_CHANNEL = int(DATABASE_CHANNEL_STR)
+    except ValueError:
+        # If it's not a valid integer, set to None or a default value
+        print(f"Warning: DATABASE_CHANNEL '{DATABASE_CHANNEL_STR}' is not a valid integer. Setting to None.")
+        DATABASE_CHANNEL = None
+else:
+    # Empty or None value
+    DATABASE_CHANNEL = None
+    print("Warning: DATABASE_CHANNEL is not set. This feature may not work properly.")
+
+# Admin list handling
 try:
     ADMINS = []
-    for x in (os.environ.get("ADMINS", "7846306818 8354564299").split()):
-        ADMINS.append(int(x))
-except ValueError:
-    raise Exception("Your Admins list does not contain valid integers.")
+    admin_str = os.environ.get("ADMINS", "7846306818 8354564299")
+    for x in admin_str.split():
+        if x.strip():  # Only process non-empty strings
+            ADMINS.append(int(x))
+except ValueError as e:
+    print(f"Warning: Your Admins list contains invalid integers: {e}")
+    # Set default admins if there's an error
+    ADMINS = [7846306818, 8354564299]
 
 # Admin == OWNER_ID
-ADMINS.append(OWNER_ID)
-ADMINS.append(8354564299)
+if OWNER_ID not in ADMINS:
+    ADMINS.append(OWNER_ID)
+if 8354564299 not in ADMINS:
+    ADMINS.append(8354564299)
 
-
+# Logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
