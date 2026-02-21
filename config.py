@@ -33,7 +33,7 @@ START_PIC = "https://telegra.ph/file/f3d3aff9ec422158feb05-d2180e3665e0ac4d32.jp
 START_IMG = "https://telegra.ph/file/f3d3aff9ec422158feb05-d2180e3665e0ac4d32.jpg"
 
 # Messages
-START_MSG = os.environ.get("START_MESSAGE", "<b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴀᴅᴠᴀɴᴄᴇᴅ ʟɪɴᴋs sʜᴀʀɪɴɢ ʙᴏᴛ. ᴡɪᴛʜ ᴛʜɪs ʙᴏᴛ, ʏᴏᴜ ᴄᴀɴ sʜᴀʀᴇ ʟɪɴᴋs ᴀɴᴅ ᴋᴇᴇᴘ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟs sᴀғᴇ ғʀᴏᴍ ᴄᴏᴘʏʀɪɢʜᴛ ɪssᴜᴇs.\n\n<blockquote>‣ ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/ShadowBotsHQ'>ʏᴀᴛᴏ</a></blockquote></b>")
+START_MSG = os.environ.get("START_MESSAGE", "<b>ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴀᴅᴠᴀɴᴄᴇᴅ ʟɪɴᴋs sʜᴀʀɪɴɢ ʙᴏᴛ. ᴡɪᴛʜ ᴛʜɪs ʙᴏᴛ, ʏᴏᴜ ᴄᴀɴ sʜᴀʀᴇ ʟɪɴᴋs ᴀɴᴅ ᴋᴇᴇᴘ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟs sᴀғᴇ ғʀᴏᴍ ᴄᴏᴘʏʀɪɢʜᴛ ɪssᴜᴇs.\n\n<blockquote>‣ ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/ShadowBotsHQ'>𝗦ʜᴀᴅᴏᴡ ⌯ Bᴏᴛs 🇮🇳</a></blockquote></b>")
 HELP = os.environ.get("HELP_MESSAGE", "<b><blockquote expandable>» Creator: <a href=tg://openmessage?user_id=7846306818>S H Λ M R O C K</a>\n» Our Community: <a href=https://t.me/VERSEXNETWORK>𝐕ᴇʀsᴇ 𝐍ᴇᴛᴡᴏʀᴋ</a>\n» Anime Channel: <a href=https://t.me/ANIMEXVERSE>𝐀ɴɪᴍᴇ 𝐕ᴇʀsᴇ</a>\n» Ongoing Anime: <a href=https://t.me/ONGOINGXVERSE>𝐎ɴɢᴏɪɴɢ 𝐕ᴇʀsᴇ</a>\n» Developer: <a href=https://t.me/Redfr>𝗥𝗘𝗗</a></b>")
 ABOUT = os.environ.get("ABOUT_MESSAGE", "<b><blockquote expandable>This bot is developed by 𝗥𝗘𝗗 (@RedFr) to securely share Telegram channel links with temporary invite links, protecting your channels from copyright issues.</b>")
 
